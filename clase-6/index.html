@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupo Familiar</title>
+    <link rel="stylesheet" href="main-mio.css">
+</head>
+<body>
+    <h1>Calculadora de edades del grupo familiar</h1>
+
+    <form id="familia-form">
+        <label for="numero-integrantes">¿Cuántas personas hay en el grupo familiar?</label>
+        <input type="number" id="numero-integrantes" min="1" required>
+        <button type="button" id="generar-inputs">Generar inputs</button>
+    </form>
+
+    <div id="integrantes-container">
+    </div>
+
+    <button type="button" id="calcular-edades" class="oculto">Calcular</button>
+    <button type="button" id="resetear" class="oculto">Empezar de nuevo</button>
+
+    <div id="resultados" class="oculto">
+        <p>Mayor edad: <span id="mayor-edad"></span></p>
+        <p>Menor edad: <span id="menor-edad"></span></p>
+        <p>Promedio de edades: <span id="promedio-edad"></span></p>
+    </div>
+<script src="./tarea-clase-6.js"></script>
+</body>
+</html>
