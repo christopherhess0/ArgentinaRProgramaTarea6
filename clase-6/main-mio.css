@@ -92,4 +92,8 @@ button:hover {
         padding: 10px;
     }
 }
+.integrante_div{
+    display: flex;
+    flex-direction: row-reverse;
+}
 

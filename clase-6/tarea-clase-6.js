@@ -25,6 +25,8 @@ const $results_div = document.querySelector('#resultados')
 const $span_max = document.querySelector('#mayor-edad')
 const $span_min = document.querySelector('#menor-edad')
 const $span_average = document.querySelector('#promedio-edad')
+const $button_want_calculate_salary = document.querySelector('#salary')
+const $salary_calculate = document.querySelector('#salary_calculate')
 
 
 const capture_input_value = (input) => {
@@ -36,6 +38,8 @@ const render_quantity_members = () => {
     for (let i = 0; i < people; i++) {
         $container.innerHTML += `<div class="integrante_div">
             <input type="number" placeholder="Ingrese Edad">
+            <span class="mensaje"></span>
+
         </div>`
         
     }
@@ -53,6 +57,7 @@ const generate_inputs = () => {
     render_quantity_members()
     show_item($button_calculate)
     show_item($button_reset)
+    show_item($button_want_calculate_salary)
 
 }
 const calculate_average = () => {
@@ -106,7 +111,7 @@ const reset = () => {
     $input_people.value = ''
     hide_item($results_div);
 }
-const calculate = () => {
+const calculate_family_stats = () => {
     render_results()
     show_item($results_div)
     
@@ -114,13 +119,33 @@ const calculate = () => {
     
 
 }
+const calculate_salaries = () => {
+    show_item($salary_calculate)
+    hide_item($button_want_calculate_salary)
+    const inputs = document.querySelectorAll('#integrantes-container input');
+    console.log(inputs);
+    inputs.forEach((person) => {
+        const age = parseInt(person.value); // Convertir el valor a número
+        let label = person.nextElementSibling; // Suponiendo que hay un elemento <label> o <span> para mostrar mensajes
+        if (age < 18) {
+            label.textContent = 'Esta persona es menor de edad, No debería trabajar :)';
+            person.disabled = true; // Deshabilitar el input
+        } else {
+            label.textContent = "Ingrese Salario de la persona";
+            person.disabled = false; // Asegurar que esté habilitado para los mayores de edad
+        }
+    });
+};
+
+
 
 
 
 const init = () => {
     $button_create_inputs.addEventListener('click', generate_inputs)
-    $button_calculate.addEventListener('click', calculate)
+    $button_calculate.addEventListener('click', calculate_family_stats)
     $button_reset.addEventListener('click', reset)
+    $button_want_calculate_salary.addEventListener('click', calculate_salaries)
 }
 
 
